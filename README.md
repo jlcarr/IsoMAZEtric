@@ -18,11 +18,53 @@ In Godot the `Camera` objects inherit from the `Spacial` class, which has the fo
 
 NOTE: the `scale` property has no effects on cameras in Godot. The `Spacial` transform of the camera appears to be different from the camera matrix by the scaling factor.
 
+So based upon these available transforms, what kinds of camera matrices can be built? Can we build the projection matrix desired from the camera's translation and rotation parameters?  
+If we ignore the Euler Z angle (unneeded for the projection we're looking for) then we can describe our transform in terms of the following basis transform, plus a translation:
+
+![R_{y}R_{x}=\begin{bmatrix}\cos(\theta)&0&\sin(\theta)\\0&1&0\\-\sin(\theta)&0&\cos(\theta)\end{bmatrix}\begin{bmatrix}1&0&0\\0&\cos(\phi)&-\sin(\phi)\\0&\sin(\phi)&\cos(\phi)\end{bmatrix}=\begin{bmatrix}\cos(\theta)&\sin(\theta)\sin(\phi)&\sin(\theta)\cos(\phi)\\0&\cos(\phi)&-\sin(\phi)\\-\sin(\theta)&\cos(\theta)\sin(\phi)&\cos(\theta)\cos(\phi)\end{bmatrix}](https://render.githubusercontent.com/render/math?math=R_%7By%7DR_%7Bx%7D%3D%0A%5Cbegin%7Bbmatrix%7D%5Ccos%28%5Ctheta%29%260%26%5Csin%28%5Ctheta%29%5C%5C0%261%260%5C%5C-%5Csin%28%5Ctheta%29%260%26%5Ccos%28%5Ctheta%29%5Cend%7Bbmatrix%7D%20%0A%5Cbegin%7Bbmatrix%7D1%260%260%5C%5C0%26%5Ccos%28%5Cphi%29%26-%5Csin%28%5Cphi%29%5C%5C0%26%5Csin%28%5Cphi%29%26%5Ccos%28%5Cphi%29%5Cend%7Bbmatrix%7D%3D%0A%5Cbegin%7Bbmatrix%7D%5Ccos%28%5Ctheta%29%26%5Csin%28%5Ctheta%29%5Csin%28%5Cphi%29%26%5Csin%28%5Ctheta%29%5Ccos%28%5Cphi%29%5C%5C0%26%5Ccos%28%5Cphi%29%26-%5Csin%28%5Cphi%29%5C%5C-%5Csin%28%5Ctheta%29%26%5Ccos%28%5Ctheta%29%5Csin%28%5Cphi%29%26%5Ccos%28%5Ctheta%29%5Ccos%28%5Cphi%29%5Cend%7Bbmatrix%7D)
+
+Using our knowledge of spherical coordinates it's not hard to see the angles should be *phi* = *-asin(1/sqrt(3))* = −35.264deg and *theta* = 45deg. Substituting this in we get the following result:
+
+![R_{y}R_{x}=\begin{bmatrix}\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}\\0&\frac{\sqrt{2}}{\sqrt{3}}&\frac{1}{\sqrt{3}}\\-\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{3}}\end{bmatrix}=\begin{bmatrix}0.707&-0.408&0.577\\0&0.816&0.577\\-0.707&-0.408&0.577\end{bmatrix}](https://render.githubusercontent.com/render/math?math=R_%7By%7DR_%7Bx%7D%3D%0A%5Cbegin%7Bbmatrix%7D%5Cfrac%7B1%7D%7B%5Csqrt%7B2%7D%7D%26-%5Cfrac%7B1%7D%7B%5Csqrt%7B6%7D%7D%26%5Cfrac%7B1%7D%7B%5Csqrt%7B3%7D%7D%5C%5C0%26%5Cfrac%7B%5Csqrt%7B2%7D%7D%7B%5Csqrt%7B3%7D%7D%26%5Cfrac%7B1%7D%7B%5Csqrt%7B3%7D%7D%5C%5C-%5Cfrac%7B1%7D%7B%5Csqrt%7B2%7D%7D%26-%5Cfrac%7B1%7D%7B%5Csqrt%7B6%7D%7D%26%5Cfrac%7B1%7D%7B%5Csqrt%7B3%7D%7D%5Cend%7Bbmatrix%7D%3D%0A%5Cbegin%7Bbmatrix%7D0.707%26-0.408%260.577%5C%5C0%260.816%260.577%5C%5C-0.707%26-0.408%260.577%5Cend%7Bbmatrix%7D)
+
+Testing these values in Godot along with `print(camera.get_camera_transform())` and `print(camera.transform)` we can see it the results match.  
+
+We can do this math pretty easily with Sympy (consider trying the `sympy.latex(expression)` function!):
+```python
+import sympy
+
+theta, phi = sympy.symbols('theta phi')
+
+R_y = sympy.Matrix([
+    [sympy.cos(theta), 0, sympy.sin(theta)],
+    [0, 1, 0],
+    [-sympy.sin(theta), 0, sympy.cos(theta)],
+])
+R_x = sympy.Matrix([
+    [1, 0, 0],
+    [0, sympy.cos(phi), -sympy.sin(phi)],
+    [0, sympy.sin(phi), sympy.cos(phi)],
+])
+
+camera_transform = R_y * R_x
+filled_camera_transform = camera_transform.subs([
+	(theta, sympy.pi/4), 
+	(phi, -sympy.asin(1/sympy.sqrt(3)))
+])
+sympy.N(filled_camera_transform)
+```
+
+Bad news though: this does not match the desired projection matrix from the dimetric pixel-perfect art:
+
+![\begin{bmatrix}1&0&-1\\-1&2&-1\end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D1%260%26-1%5C%5C-%5Cfrac%7B1%7D%7B2%7D%261%26-%5Cfrac%7B1%7D%7B2%7D%5Cend%7Bbmatrix%7D)
+
+What can we do?
 
 ## Reference
 ### Projection Math
 - https://en.wikipedia.org/wiki/Axonometric_projection
 - https://en.wikipedia.org/wiki/Camera_matrix
+- https://en.wikipedia.org/wiki/Spherical_coordinate_system
 
 ### Godot
 - https://docs.godotengine.org/en/stable/classes/class_spatial.html
