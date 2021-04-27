@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tiles/Staircase_Platform/staircase_platform_lb_billboard.tres" type="Material" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, 1, -1, 1, -1, 1, 1, -1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.69, 0.564, 0.69 )
+
+[sub_resource type="QuadMesh" id=3]
+
+[node name="Stairs" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1.50804e-08, 0, 0.345, 0, 0.28, 0, -0.345, 0, -1.50804e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CubeMesh" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="SpriteMesh" type="MeshInstance" parent="."]
+transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 1 )
+
