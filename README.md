@@ -70,11 +70,37 @@ What can we do? Well to get the matrices to match we need an isotropic scaling f
 - Write a shader that will "disconnect" the physical game world from the rendered screen and produce the desired projection.
    - This one is the most proper solution, provides the most control, and is of course also the hardest.
 
+### The Solution
+#### Camera Settings
+- `projection = PROJECTION_ORTHOGONAL`
+- `translation = Vector3(20, 20, 20)`
+- `rotation_degrees = Vector3(-35.26, 45, 0)`
+- `size = 32`
+
+#### Window
+- `display/window/size/width = 656`
+- `display/window/size/height = 656`
+- `display/window/size/resizable = false`
+- `display/window/stretch/shrink = 2`
+
+#### Cube Mesh
+- `size = Vector3(2, 2, 2)`
+
+#### Cube Collision Shape
+- `extents = Vector3(1, 1, 1)`
+
+
 ## Reference
 ### Projection Math
 - https://en.wikipedia.org/wiki/Axonometric_projection
 - https://en.wikipedia.org/wiki/Camera_matrix
 - https://en.wikipedia.org/wiki/Spherical_coordinate_system
+
+### Rotations Math
+- https://en.wikipedia.org/wiki/Rotation_matrix
+- https://en.wikipedia.org/wiki/Euler_angles
+- https://en.wikipedia.org/wiki/Spherical_coordinate_system
+
 
 ### Godot
 - https://docs.godotengine.org/en/stable/classes/class_spatial.html
