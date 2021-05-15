@@ -1,3 +1,5 @@
+.DS_Store
+misc.txt
 
 # Godot-specific ignores
 .import/

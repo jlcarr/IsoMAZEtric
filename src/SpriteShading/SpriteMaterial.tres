@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://SpriteShading/isometric_sprite.shader" type="Shader" id=1]
+[ext_resource path="res://Tiles/Cube/cube_sprite.png" type="Texture" id=2]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/scale = 8.0
+shader_param/x_val = 9.0
+shader_param/pos = Vector3( 0, 0, 0 )
+shader_param/sprite = ExtResource( 2 )

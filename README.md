@@ -71,6 +71,9 @@ What can we do? Well to get the matrices to match we need an isotropic scaling f
    - This one is the most proper solution, provides the most control, and is of course also the hardest.
 
 ### The Projection Solution
+#### Procedural Pixel
+- `x = 9`
+- `l = 2`
 #### Camera Settings
 - `projection = PROJECTION_ORTHOGONAL`
 - `translation = Vector3(20, 20, 20)`

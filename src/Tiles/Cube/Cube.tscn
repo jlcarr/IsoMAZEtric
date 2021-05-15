@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SpriteShading/SpriteMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Tiles/Cube/Cube.gd" type="Script" id=3]
+[ext_resource path="res://SpriteShading/dimetric_material.tres" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[node name="Cube" type="StaticBody"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="PrimitiveMesh" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="UnshadedMesh" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
