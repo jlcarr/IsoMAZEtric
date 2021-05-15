@@ -6,6 +6,8 @@
 [ext_resource path="res://Tiles/Platform/Platform.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
+margin = 0.1
+extents = Vector3( 1, 0.2, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -20,6 +22,7 @@ shader_param/sprite = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -28,19 +31,16 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="MeshInstanceUnaltered" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 visible = false
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="PrimitiveMesh" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 visible = false
 mesh = SubResource( 2 )
 material/0 = ExtResource( 2 )
 
 [node name="UnshadedMesh" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
 visible = false
 mesh = SubResource( 2 )
 material/0 = null

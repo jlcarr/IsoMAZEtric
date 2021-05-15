@@ -18,6 +18,10 @@ config/name="IsoMAZEtric"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Levels="*res://Levels.gd"
+
 [display]
 
 window/size/width=656
