@@ -1,7 +1,5 @@
 extends Spatial
 
-const Levels = preload("Levels.gd").levels
-
 # Load all the tiles
 #const Cube = preload("Tiles/Cube/Cube.tscn")
 const Platform = preload("Tiles/Platform/Platform.tscn")
@@ -22,20 +20,28 @@ onready var player = self.find_node("Player")
 
 func _ready():
 	obj_list.append(player)
-	player.position(Vector3(0,1,0))
-	
-	construct_level(Levels[2]["ConstMap"])
+	var level = Levels.levels[4]
+	if level.has("ConstMap"):
+		construct_level(level["ConstMap"])
+	elif level.has("FuncMap"):
+		var level_array = Levels.callv(level["FuncMap"], level["MapParams"])
+		construct_level(level_array)
+	player.position(player.orig)
 
 func _input(event):
 	if event.is_action_pressed("ui_rotate"):
+		var rot_mat = Basis()
+		rot_mat = rot_mat.rotated(Vector3(0,1,0), PI/2)
+		player.orig = rot_mat*player.orig
 		for element in obj_list:
 			element.rot()
 
 func construct_level(level_array):
 	var offset = Vector3()
-	offset.x = level_array[0][0].size()/2
+	offset.x = level_array[0][0].size()/2 - 0.5
 	#offset.y = level_array.size()/2
-	offset.z = level_array[0].size()/2
+	offset.z = level_array[0].size()/2 - 0.5
+	player.orig = offset + Vector3(0,1,0)
 	for y in level_array.size():
 		for z in level_array[y].size():
 			for x in level_array[y][z].size():

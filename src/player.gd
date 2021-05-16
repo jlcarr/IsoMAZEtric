@@ -11,6 +11,7 @@ func _init():
 	body = _self
 
 # Setup vars
+var orig = Vector3()
 const GRAVITY = 0.98
 const JUMP_FORCE = 20
 var fall_speed = 0
@@ -55,4 +56,4 @@ func _physics_process(delta):
 		fall_speed = JUMP_FORCE
 	
 	if self.transform.origin.y < -10:
-		self.transform.origin = Vector3(0,1,0)
+		self.position(orig)
