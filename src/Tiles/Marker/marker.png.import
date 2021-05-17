@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sphere_sprite.png-f57610b4f0d66e1309cf5eced7a185d5.stex"
+path="res://.import/marker.png-f92c9c4f9d2ffdc1ec2e4b5d9df176ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/sphere_sprite.png"
-dest_files=[ "res://.import/sphere_sprite.png-f57610b4f0d66e1309cf5eced7a185d5.stex" ]
+source_file="res://Tiles/Marker/marker.png"
+dest_files=[ "res://.import/marker.png-f92c9c4f9d2ffdc1ec2e4b5d9df176ba.stex" ]
 
 [params]
 

@@ -115,6 +115,8 @@ The **frament shader** is then set up to select the pixels from the texture so a
 
 ### 2.5D
 - Official Godot 2.5D plugin: https://godotengine.org/asset-library/asset/583
+- https://www.reddit.com/r/godot/comments/mcqzwc/almost_perfect_pixel_perfect_25d_pixelart_demo/
+- https://gamefiddler.com/isometric-pixel-art-in-blender/
 
 ### Shaders
 - Outline shader: https://roystan.net/articles/outline-shader.html

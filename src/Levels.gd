@@ -11,7 +11,7 @@ const levels = [
 					[1,1]
 				],
 				[
-					[0,0],
+					[6,0],
 					[3,0]
 				]
 			]
@@ -25,6 +25,33 @@ const levels = [
 					[1,1,1],
 					[1,1,1],
 					[1,1,1]
+				]
+			]
+	},
+	{
+		"Name": "",
+		"HintText": "",
+		"ConstMap": 
+			[
+				[
+					[1,1,1,1],
+					[1,1,1,1],
+					[1,1,1,1],
+					[1,1,1,1],
+				]
+			]
+	},
+	{
+		"Name": "",
+		"HintText": "",
+		"ConstMap": 
+			[
+				[
+					[1,1,1,1,1],
+					[1,1,1,1,1],
+					[1,1,1,1,1],
+					[1,1,1,1,1],
+					[1,1,1,1,1],
 				]
 			]
 	},
@@ -89,6 +116,13 @@ const levels = [
 					[1,3,0,0,0],
 					[1,3,0,0,0],
 				],
+				[
+					[0,0,0,0,0],
+					[0,0,0,0,0],
+					[6,0,0,0,0],
+					[0,0,0,0,0],
+					[0,0,0,0,0],
+				],
 			]
 	},
 	{
@@ -136,6 +170,7 @@ func random_walk(dim, walk_len):
 			level_array[pos.y+1][pos.z][pos.x] = 0
 		level_array[pos.y][pos.z][pos.x] = 0
 		level_array[pos.y-1][pos.z][pos.x] = choice["tile"]
+	level_array[pos.y][pos.z][pos.x] = 6
 	
 	# Final cleanup
 	for y in level_array.size():

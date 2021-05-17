@@ -4,6 +4,7 @@ extends Spatial
 #const Cube = preload("Tiles/Cube/Cube.tscn")
 const Platform = preload("Tiles/Platform/Platform.tscn")
 const Staircase = preload("Tiles/StaircaseThin/StaircaseThin.tscn")
+const Marker = preload("Tiles/Marker/Marker.tscn")
 var block_map = [
 	null, 
 	Platform.instance(), 
@@ -11,6 +12,7 @@ var block_map = [
 	Staircase.instance().set_dir(-1,1),
 	Staircase.instance().set_dir(1,-1), 
 	Staircase.instance().set_dir(-1,-1),
+	Marker.instance()
 ]
 
 var obj_list = []
@@ -20,7 +22,7 @@ onready var player = self.find_node("Player")
 
 func _ready():
 	obj_list.append(player)
-	var level = Levels.levels[4]
+	var level = Levels.levels[5]
 	if level.has("ConstMap"):
 		construct_level(level["ConstMap"])
 	elif level.has("FuncMap"):
@@ -38,10 +40,10 @@ func _input(event):
 
 func construct_level(level_array):
 	var offset = Vector3()
-	offset.x = level_array[0][0].size()/2 - 0.5
-	#offset.y = level_array.size()/2
-	offset.z = level_array[0].size()/2 - 0.5
-	player.orig = offset + Vector3(0,1,0)
+	offset.x = (level_array[0][0].size()-1)/2.0
+	offset.y = (level_array.size()-1)/2.0
+	offset.z = (level_array[0].size()-1)/2.0
+	player.orig = offset+Vector3(0,1-2*offset.y,0)
 	for y in level_array.size():
 		for z in level_array[y].size():
 			for x in level_array[y][z].size():

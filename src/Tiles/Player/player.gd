@@ -1,9 +1,9 @@
 # Setup class type
 extends "res://SpriteShading/SpriteShadedSpacial.gd"
-const rb_texture = preload("res://Tiles/sphere_sprite.png")
-const lb_texture = preload("res://Tiles/sphere_sprite.png")
-const lf_texture = preload("res://Tiles/sphere_sprite.png")
-const rf_texture = preload("res://Tiles/sphere_sprite.png")
+const rb_texture = preload("sphere_sprite.png")
+const lb_texture = preload("sphere_sprite.png")
+const lf_texture = preload("sphere_sprite.png")
+const rf_texture = preload("sphere_sprite.png")
 
 var body : KinematicBody
 func _init():
@@ -55,5 +55,5 @@ func _physics_process(delta):
 		just_jumped = true
 		fall_speed = JUMP_FORCE
 	
-	if self.transform.origin.y < -10:
+	if self.transform.origin.y < -20:
 		self.position(orig)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Tiles/sphere_sprite.png" type="Texture" id=1]
+[ext_resource path="res://Tiles/Player/sphere_sprite.png" type="Texture" id=1]
 [ext_resource path="res://SpriteShading/isometric_sprite.shader" type="Shader" id=2]
 [ext_resource path="res://SpriteShading/dimetric_material.tres" type="Material" id=3]
 
