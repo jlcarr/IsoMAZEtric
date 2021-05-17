@@ -7,3 +7,9 @@ const rf_texture = preload("marker.png")
 
 func _process(delta):
 	update_tex()
+
+
+
+func _on_Marker_body_entered(body):
+	if "orig" in body:
+		body.position(body.orig)
