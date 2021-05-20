@@ -22,7 +22,7 @@ onready var player = self.find_node("Player")
 
 func _ready():
 	obj_list.append(player)
-	var level = Levels.levels[5]
+	var level = Levels.levels[Levels.current_level]
 	if level.has("ConstMap"):
 		construct_level(level["ConstMap"])
 	elif level.has("FuncMap"):
