@@ -56,4 +56,5 @@ func _physics_process(delta):
 		fall_speed = JUMP_FORCE
 	
 	if self.transform.origin.y < -20:
-		self.position(orig)
+		#self.position(orig)
+		get_tree().get_current_scene().finish_line()

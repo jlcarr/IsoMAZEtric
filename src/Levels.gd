@@ -2,11 +2,14 @@ extends Node
 
 var current_level = 0
 
+var victory = false 
+
 func level_up():
-	if self.current_level+1 < self.levels.size():
+	if victory and self.current_level+1 < self.levels.size():
 		self.current_level += 1
-	get_tree().reload_current_scene()
+	victory = false
 	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 const levels = [
 	{

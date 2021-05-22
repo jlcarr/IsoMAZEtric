@@ -10,7 +10,7 @@ func _process(delta):
 
 
 func _on_Marker_body_entered(body):
-	#Levels.level_up()
+	Levels.victory = true
 	get_tree().get_current_scene().finish_line()
 	#if "orig" in body:
 	#	body.position(body.orig)

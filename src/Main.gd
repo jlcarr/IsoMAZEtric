@@ -2,7 +2,7 @@ extends Spatial
 
 onready var LevelName = get_node("LevelText/Container/LevelName")
 onready var LevelHint = get_node("LevelText/Container/LevelHint")
-
+onready var FinishLabel = get_node("Finish").find_node("Label")
 
 # Load all the tiles
 #const Cube = preload("Tiles/Cube/Cube.tscn")
@@ -25,6 +25,7 @@ var obj_list = []
 onready var player = self.find_node("Player")
 
 func _ready():
+	get_tree().paused = false
 	obj_list.append(player)
 	var level = Levels.levels[Levels.current_level]
 	
@@ -50,7 +51,12 @@ func _input(event):
 
 func finish_line():
 	get_tree().paused = true
-	get_node("AnimationPlayer").play("Message")
+	#get_node("AnimationPlayer").play("Message")
+	if Levels.victory:
+		FinishLabel.text = "CONGRATULATION!"
+	else:
+		FinishLabel.text = "OOPS!"
+	get_node("Finish").show()
 
 func construct_level(level_array):
 	var offset = Vector3()
