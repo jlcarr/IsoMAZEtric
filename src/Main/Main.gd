@@ -6,9 +6,9 @@ onready var FinishLabel = get_node("Finish").find_node("Label")
 
 # Load all the tiles
 #const Platform = preload("Tiles/Cube/Cube.tscn")
-const Platform = preload("Tiles/Platform/Platform.tscn")
-const Staircase = preload("Tiles/StaircaseThin/StaircaseThin.tscn")
-const Marker = preload("Tiles/Marker/Marker.tscn")
+const Platform = preload("res://Tiles/Platform/Platform.tscn")
+const Staircase = preload("res://Tiles/StaircaseThin/StaircaseThin.tscn")
+const Marker = preload("res://Tiles/Marker/Marker.tscn")
 var block_map = [
 	null, 
 	Platform.instance(), 
@@ -53,9 +53,9 @@ func finish_line():
 	get_tree().paused = true
 	#get_node("AnimationPlayer").play("Message")
 	if Levels.victory:
-		FinishLabel.text = "CONGRATULATION!"
+		FinishLabel.text = "Congratulations!"
 	else:
-		FinishLabel.text = "OOPS!"
+		FinishLabel.text = "Oops!"
 	get_node("Finish").show()
 
 func construct_level(level_array):

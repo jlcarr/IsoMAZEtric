@@ -13,8 +13,8 @@ func level_up():
 
 const levels = [
 	{
-		"Name": "LEVEL 0: TOO EASY",
-		"HintText": "JUST USE THE ARROW KEYS TO MOVE TO THE ARROW",
+		"Name": "Level 0: Too Easy",
+		"HintText": "Use the arrow keys to move toward the arrow.",
 		"ConstMap": 
 			[
 				[
@@ -28,8 +28,8 @@ const levels = [
 			]
 	},
 	{
-		"Name": "LEVEL 1: ANOTHER ONE",
-		"HintText": "JUST USE THE ARROW KEYS TO MOVE TO THE ARROW",
+		"Name": "Level 1: Another One",
+		"HintText": "Try this.",
 		"ConstMap": 
 			[
 				[
@@ -45,7 +45,7 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
+		"Name": "Level 2: xyz",
 		"HintText": "",
 		"ConstMap": 
 			[
@@ -64,7 +64,7 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
+		"Name": "Level 3: xyz",
 		"HintText": "",
 		"ConstMap": 
 			[
@@ -85,7 +85,7 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
+		"Name": "Level 4: xyz",
 		"HintText": "",
 		"ConstMap": 
 			[
@@ -113,7 +113,7 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
+		"Name": "Level 5: xyz",
 		"HintText": "",
 		"ConstMap":
 			[
@@ -155,8 +155,8 @@ const levels = [
 			]
 	},
 	{
-		"Name": "LEVEL ???: RANDOM WALK",
-		"HintText": "EXPLORE!",
+		"Name": "Level ???: Random Walk",
+		"HintText": "Explore!",
 		"FuncMap": "random_walk",
 		"MapParams": [Vector3(6,6,6), 2*6*6*6]
 	}

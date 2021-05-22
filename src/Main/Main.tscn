@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Tiles/Player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tiles/Player/player.gd" type="Script" id=3]
-[ext_resource path="res://Menu/PixeledFont.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://LevelFinish.gd" type="Script" id=5]
+[ext_resource path="res://Theme.tres" type="StyleBox" id=1]
+[ext_resource path="res://Main/Main.gd" type="Script" id=2]
+[ext_resource path="res://Menu/Minitel.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Tiles/Player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tiles/Player/player.gd" type="Script" id=5]
+[ext_resource path="res://Main/LevelFinish.gd" type="Script" id=6]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Message"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Finish:rect_position")
@@ -35,38 +36,24 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 4.0
-content_margin_right = 4.0
-content_margin_top = 4.0
-content_margin_bottom = 4.0
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
-corner_detail = 1
-anti_aliasing = false
-
 [sub_resource type="DynamicFont" id=2]
-size = 5
-font_data = ExtResource( 4 )
+size = 8
+font_data = ExtResource( 3 )
 
 [node name="Main" type="Spatial"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.707107, -0.408204, 0.577381, 0, 0.816541, 0.577287, -0.707107, -0.408204, 0.577381, 20, 20, 20 )
 projection = 1
 size = 32.0
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-script = ExtResource( 3 )
+[node name="Player" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/Message = SubResource( 3 )
+anims/Message = SubResource( 1 )
 
 [node name="Finish" type="PanelContainer" parent="."]
 pause_mode = 2
@@ -75,42 +62,44 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
+margin_left = -68.0
 margin_top = -20.0
-margin_right = 50.0
+margin_right = 68.0
 margin_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/panel = SubResource( 1 )
-script = ExtResource( 5 )
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Finish"]
 margin_left = 4.0
-margin_top = 4.0
-margin_right = 96.0
-margin_bottom = 36.0
+margin_top = 8.0
+margin_right = 132.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="Finish/VBoxContainer"]
-margin_right = 92.0
-margin_bottom = 14.0
+margin_right = 128.0
+margin_bottom = 10.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "CONGRATULATIONS!"
+text = "Congratulations!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="Finish/VBoxContainer"]
-margin_top = 18.0
-margin_right = 92.0
-margin_bottom = 32.0
+margin_top = 14.0
+margin_right = 128.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "PRESS SPACE"
+text = "press space"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,34 +110,36 @@ anchor_right = 1.0
 margin_bottom = 39.0
 size_flags_horizontal = 2
 size_flags_vertical = 4
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Container" type="VBoxContainer" parent="LevelText"]
 margin_left = 4.0
-margin_top = 4.0
+margin_top = 7.0
 margin_right = 652.0
-margin_bottom = 36.0
+margin_bottom = 31.0
+size_flags_horizontal = 9
+size_flags_vertical = 4
 
 [node name="LevelName" type="Label" parent="LevelText/Container"]
 margin_right = 648.0
-margin_bottom = 14.0
+margin_bottom = 10.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "LEVEL 0: TOO EASY"
+text = "Level 0: Level Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelHint" type="Label" parent="LevelText/Container"]
-margin_top = 18.0
+margin_top = 14.0
 margin_right = 648.0
-margin_bottom = 32.0
+margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "C'MON, YOU GOT THIS"
+text = "Level's hint text directing you."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
