@@ -25,9 +25,6 @@ const d_vec = Vector3(1,0,1)
 var velocity = Vector3(0,0,0)
 func _ready():
 	pass
-	
-func _process(delta):
-	update_tex()
 
 func _physics_process(delta):
 	velocity = Vector3()

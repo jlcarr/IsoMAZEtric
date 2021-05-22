@@ -5,7 +5,7 @@ onready var LevelHint = get_node("LevelText/Container/LevelHint")
 onready var FinishLabel = get_node("Finish").find_node("Label")
 
 # Load all the tiles
-#const Cube = preload("Tiles/Cube/Cube.tscn")
+#const Platform = preload("Tiles/Cube/Cube.tscn")
 const Platform = preload("Tiles/Platform/Platform.tscn")
 const Staircase = preload("Tiles/StaircaseThin/StaircaseThin.tscn")
 const Marker = preload("Tiles/Marker/Marker.tscn")

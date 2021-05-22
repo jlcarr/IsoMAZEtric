@@ -5,10 +5,10 @@ uniform float scale = 8.0; // screen coord to texture coords ratio
 uniform float x_val = 9.0; // texture sizing parameter
 uniform sampler2D sprite;
 
-uniform vec3 pos;
-
 
 void vertex(){
+	vec4 pos = WORLD_MATRIX[3]/2.0;
+	
 	// dimetric projection matrix stretch
 	mat4 stretch = mat4(1.0);
 	stretch[0][0] = sqrt(2.0);
@@ -24,6 +24,7 @@ void vertex(){
 }
 
 void fragment(){
+	vec4 pos = WORLD_MATRIX[3]/2.0;
 	vec2 pixel_pos = SCREEN_UV;
 	
 	// Compute the pixel's position
@@ -44,11 +45,12 @@ void fragment(){
 	
 	ALBEDO = texture_color.rgb;
 	ALPHA = texture_color.a;
+	
 	ALPHA *= float( 
 		(pixel_pos.x >= 0.0) 
 		&& (pixel_pos.x < 1.0) 
 		&& (pixel_pos.y >= 0.0) 
-		&& (pixel_pos.y < 1.0) );
+		&& (pixel_pos.y <= 1.0) );
 	
 	// test alpha
 	//ALBEDO = ALPHA > 0.05 ? ALBEDO : vec3(1,0,0);

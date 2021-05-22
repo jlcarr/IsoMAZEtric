@@ -5,23 +5,22 @@
 [ext_resource path="res://SpriteShading/dimetric_material.tres" type="Material" id=3]
 [ext_resource path="res://Tiles/Marker/Marker.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="CapsuleMesh" id=5]
+[sub_resource type="CapsuleMesh" id=2]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/scale = 8.0
 shader_param/x_val = 9.0
-shader_param/pos = Vector3( 0, 0, 0 )
 shader_param/sprite = ExtResource( 1 )
 
-[sub_resource type="CapsuleMesh" id=6]
+[sub_resource type="CapsuleMesh" id=4]
 
-[sub_resource type="CapsuleMesh" id=7]
+[sub_resource type="CapsuleMesh" id=5]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "Bounce"
 loop = true
 tracks/0/type = "value"
@@ -34,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.2, 0 ), Vector3( 0, 0.9, 0 ), Vector3( 0, 0.2, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("PrimitiveMesh:translation")
@@ -58,7 +57,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.2, 0 ), Vector3( 0, 0.9, 0 ), Vector3( 0, 0.2, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [node name="Marker" type="Area"]
@@ -67,27 +66,27 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 5 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="PrimitiveMesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 visible = false
-mesh = SubResource( 6 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 3 )
 
 [node name="UnshadedMesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 visible = false
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Bounce"
-anims/Bounce = SubResource( 8 )
+anims/Bounce = SubResource( 6 )
 
 [connection signal="body_entered" from="." to="." method="_on_Marker_body_entered"]

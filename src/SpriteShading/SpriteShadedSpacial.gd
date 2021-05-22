@@ -7,7 +7,6 @@ func _ready():
 
 func position(pos):
 	self.transform.origin = 2*pos
-	update_tex()
 	return self
 
 func get_pos():
@@ -30,12 +29,6 @@ func rot():
 	if new_rot_deg == 180 or new_rot_deg == 270:
 		fb = -1
 	self.set_dir(lr, fb)
-
-func update_tex():
-	var mesh = get_node("MeshInstance")
-	var material = mesh.get_surface_material(0)
-	var pos = self.transform.origin + mesh.transform.origin
-	material.set_shader_param("pos", pos/2)
 
 func set_dir(lr=1,fb=1):
 	self.set_rotation(Vector3())

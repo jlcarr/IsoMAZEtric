@@ -8,5 +8,4 @@ resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/scale = 8.0
 shader_param/x_val = 9.0
-shader_param/pos = Vector3( 0, 0, 0 )
 shader_param/sprite = ExtResource( 2 )
