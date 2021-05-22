@@ -2,10 +2,16 @@ extends Node
 
 var current_level = 0
 
+func level_up():
+	if self.current_level+1 < self.levels.size():
+		self.current_level += 1
+	get_tree().reload_current_scene()
+	get_tree().paused = false
+
 const levels = [
 	{
-		"Name": "",
-		"HintText": "",
+		"Name": "LEVEL 0: TOO EASY",
+		"HintText": "JUST USE THE ARROW KEYS TO MOVE TO THE ARROW",
 		"ConstMap": 
 			[
 				[
@@ -19,14 +25,19 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
-		"HintText": "",
+		"Name": "LEVEL 1: ANOTHER ONE",
+		"HintText": "JUST USE THE ARROW KEYS TO MOVE TO THE ARROW",
 		"ConstMap": 
 			[
 				[
-					[6,1,1],
+					[1,1,1],
 					[1,1,1],
 					[1,1,1]
+				],
+				[
+					[6,0,0],
+					[0,0,0],
+					[0,0,0]
 				]
 			]
 	},
@@ -36,10 +47,16 @@ const levels = [
 		"ConstMap": 
 			[
 				[
-					[6,1,1,1],
 					[1,1,1,1],
 					[1,1,1,1],
 					[1,1,1,1],
+					[1,1,1,1],
+				],
+				[
+					[6,0,0,0],
+					[0,0,0,0],
+					[0,0,0,0],
+					[0,0,0,0]
 				]
 			]
 	},
@@ -49,11 +66,18 @@ const levels = [
 		"ConstMap": 
 			[
 				[
-					[6,1,1,1,1],
 					[1,1,1,1,1],
 					[1,1,1,1,1],
 					[1,1,1,1,1],
 					[1,1,1,1,1],
+					[1,1,1,1,1],
+				],
+				[
+					[6,0,0,0,0],
+					[0,0,0,0,0],
+					[0,0,0,0,0],
+					[0,0,0,0,0],
+					[0,0,0,0,0],
 				]
 			]
 	},
@@ -128,8 +152,8 @@ const levels = [
 			]
 	},
 	{
-		"Name": "",
-		"HintText": "",
+		"Name": "LEVEL ???: RANDOM WALK",
+		"HintText": "EXPLORE!",
 		"FuncMap": "random_walk",
 		"MapParams": [Vector3(6,6,6), 2*6*6*6]
 	}

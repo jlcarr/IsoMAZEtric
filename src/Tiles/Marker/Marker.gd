@@ -10,8 +10,7 @@ func _process(delta):
 
 
 func _on_Marker_body_entered(body):
-	if Levels.current_level+1 < Levels.levels.size():
-		Levels.current_level += 1
-	get_tree().reload_current_scene()
+	#Levels.level_up()
+	get_tree().get_current_scene().finish_line()
 	#if "orig" in body:
 	#	body.position(body.orig)

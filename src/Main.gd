@@ -1,5 +1,9 @@
 extends Spatial
 
+onready var LevelName = get_node("LevelText/Container/LevelName")
+onready var LevelHint = get_node("LevelText/Container/LevelHint")
+
+
 # Load all the tiles
 #const Cube = preload("Tiles/Cube/Cube.tscn")
 const Platform = preload("Tiles/Platform/Platform.tscn")
@@ -23,6 +27,12 @@ onready var player = self.find_node("Player")
 func _ready():
 	obj_list.append(player)
 	var level = Levels.levels[Levels.current_level]
+	
+	# Add the text
+	LevelName.text = level["Name"]
+	LevelHint.text = level["HintText"]
+	
+	# Construct the map
 	if level.has("ConstMap"):
 		construct_level(level["ConstMap"])
 	elif level.has("FuncMap"):
@@ -38,10 +48,14 @@ func _input(event):
 		for element in obj_list:
 			element.rot()
 
+func finish_line():
+	get_tree().paused = true
+	get_node("AnimationPlayer").play("Message")
+
 func construct_level(level_array):
 	var offset = Vector3()
 	offset.x = (level_array[0][0].size()-1)/2.0
-	offset.y = (level_array.size()-1)/2.0
+	offset.y = (level_array.size()-1)/2.0 + 2
 	offset.z = (level_array[0].size()-1)/2.0
 	player.orig = offset+Vector3(0,1-2*offset.y,0)
 	for y in level_array.size():
