@@ -120,3 +120,10 @@ The **frament shader** is then set up to select the pixels from the texture so a
 
 ### Shaders
 - Outline shader: https://roystan.net/articles/outline-shader.html
+
+## TODO
+- Dark mode
+- Loading noise shader
+- Final victory scene
+- Levels design
+- Consider level name: Shift In Perspective

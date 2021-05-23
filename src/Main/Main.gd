@@ -28,6 +28,7 @@ func _ready():
 	get_tree().paused = false
 	obj_list.append(player)
 	var level = Levels.levels[Levels.current_level]
+	level = Levels.levels[5]
 	
 	# Add the text
 	LevelName.text = level["Name"]

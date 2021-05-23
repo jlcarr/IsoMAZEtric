@@ -36,6 +36,7 @@ void fragment(){
 	screen_offset /= VIEWPORT_SIZE;//*41.0;
 	pixel_pos += screen_offset;
 	pixel_pos.x += 1.0/VIEWPORT_SIZE.x/41.0; // seems to need a little nudge?
+	pixel_pos.y += 1.0/VIEWPORT_SIZE.y/41.0;
 	
 	// scale it about the center
 	pixel_pos = (pixel_pos-0.5)*scale + 0.5;
@@ -46,11 +47,12 @@ void fragment(){
 	ALBEDO = texture_color.rgb;
 	ALPHA = texture_color.a;
 	
+	
 	ALPHA *= float( 
 		(pixel_pos.x >= 0.0) 
 		&& (pixel_pos.x < 1.0) 
 		&& (pixel_pos.y >= 0.0) 
-		&& (pixel_pos.y <= 1.0) );
+		&& (pixel_pos.y < 1.0) );
 	
 	// test alpha
 	//ALBEDO = ALPHA > 0.05 ? ALBEDO : vec3(1,0,0);
