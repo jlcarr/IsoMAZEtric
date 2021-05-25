@@ -12,7 +12,7 @@ func _init():
 
 # Setup vars
 var orig = Vector3()
-const GRAVITY = 0.98
+const GRAVITY = 10.98
 const JUMP_FORCE = 20
 var fall_speed = 0
 
