@@ -58,7 +58,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 2: Blind Corner",
-		"HintText": "Press shift to rotate and get a better view!",
+		"HintText": "Press SHIFT to rotate and get a better view!",
 		"ConstMap": 
 			[
 				[
@@ -105,7 +105,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 3: The Ivory Tower",
-		"HintText": "Carry on upwards!",
+		"HintText": "Carry on upward!",
 		"ConstMap": 
 			[
 				[
@@ -184,7 +184,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 6: Ups And Downs",
-		"HintText": "",
+		"HintText": "Sometimes life takes you up, down and around.",
 		"ConstMap": 
 			[
 				[
@@ -226,7 +226,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 6: A Matter Of Perspective",
-		"HintText": "Beware illusions of perspective!",
+		"HintText": "Beware illusions of perspective and false endings!",
 		"ConstMap": 
 			[
 				[
@@ -257,7 +257,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 7: Super Symmetry",
-		"HintText": "Beware false endings!",
+		"HintText": "Sometimes it looks like nothing has changed.",
 		"ConstMap":
 			[
 				[

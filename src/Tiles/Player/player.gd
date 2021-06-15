@@ -12,7 +12,7 @@ func _init():
 
 # Setup vars
 var orig = Vector3()
-const GRAVITY = 10.98
+const GRAVITY = 0.98
 const JUMP_FORCE = 20
 var fall_speed = 0
 
@@ -38,6 +38,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		velocity += d_vec
 	velocity = SPEED * velocity.normalized()
+	
+	if fall_speed < -6*GRAVITY:
+		velocity = Vector3()
+		
 	velocity.y = fall_speed
 	body.move_and_slide(velocity, Vector3(0,1,0))
 	
@@ -48,9 +52,9 @@ func _physics_process(delta):
 		fall_speed = -0.1
 	
 	var just_jumped = false
-	if grounded and Input.is_action_pressed("ui_jump"):
-		just_jumped = true
-		fall_speed = JUMP_FORCE
+	#if grounded and Input.is_action_pressed("ui_jump"):
+	#	just_jumped = true
+	#	fall_speed = JUMP_FORCE
 	
 	if self.transform.origin.y < -20:
 		#self.position(orig)
