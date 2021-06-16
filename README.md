@@ -73,18 +73,29 @@ What can we do? Well to get the matrices to match we need an isotropic scaling f
 ### The Projection Solution
 #### Procedural Pixel
 - `x = 9`
+   - This gives each sprite a total size of `41` by `41`
 - `l = 2`
 #### Camera Settings
 - `projection = PROJECTION_ORTHOGONAL`
 - `translation = Vector3(20, 20, 20)`
+   - This moves the camera away from the origin along the null space `Vector3(1,1,1)`: changing the value won't affect the size of what's on screen, only what appears in front/behind the camera.
 - `rotation_degrees = Vector3(-35.26, 45, 0)`
+   - This is the Euler-angles of the cartesian `Vector(1,1,1)`
 - `size = 32`
 
 #### Window Settings
 - `display/window/size/width = 656`
+   - This value is `41*32/2`
 - `display/window/size/height = 656`
 - `display/window/size/resizable = false`
 - `display/window/stretch/shrink = 2`
+   - This essentially makes each of our game's pixels equal to `2x2` screen pixels
+
+#### HTML Export
+- `canvasResizePolicy = 1` i.e. "Project"
+   - This ensures the canvas' size is set by the Godot project, instead of being allowed to stretch.
+- Head Include: `<style type='text/css'>#canvas {margin: auto;}</style>`
+   - This centers the game screen on the page.
 
 #### Cubes
 - Mesh: `size = Vector3(2, 2, 2)`
