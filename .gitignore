@@ -1,5 +1,6 @@
 .DS_Store
 misc.txt
+export/
 
 # Godot-specific ignores
 .import/

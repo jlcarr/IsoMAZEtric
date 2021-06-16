@@ -38,6 +38,7 @@ func _ready():
 	if level.has("ConstMap"):
 		construct_level(level["ConstMap"])
 	elif level.has("FuncMap"):
+		Levels.rng_state = Levels.rng.get_state()
 		var level_array = Levels.callv(level["FuncMap"], level["MapParams"])
 		construct_level(level_array)
 	player.position(player.orig)

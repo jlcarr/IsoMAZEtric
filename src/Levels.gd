@@ -2,14 +2,31 @@ extends Node
 
 var current_level = 0
 
-var victory = false 
+var victory = false
+var victory_level = 8
+
+var rng = RandomNumberGenerator.new()
+var rng_state = rng.get_state()
+func _ready():
+	rng.randomize()
 
 func level_up():
-	if victory and self.current_level+1 < self.levels.size():
+	if victory and self.current_level == victory_level:
+		victory = false
+		get_tree().paused = false
+		get_tree().change_scene("res://Victory/Victory.tscn")
+		return
+		
+	if victory and self.current_level < victory_level:
 		self.current_level += 1
+	
+	if not victory:
+		rng.set_state(rng_state)
+	
 	victory = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
 
 const levels = [
 	{
@@ -183,7 +200,7 @@ const levels = [
 			]
 	},
 	{
-		"Name": "Level 6: Ups And Downs",
+		"Name": "Level 5: Ups And Downs",
 		"HintText": "Sometimes life takes you up, down and around.",
 		"ConstMap": 
 			[
@@ -345,7 +362,6 @@ const levels = [
 
 
 func random_walk(dim, walk_len):
-	randomize()
 	# Initialize the map to empty
 	var level_array = []
 	for i in dim.y:
@@ -374,7 +390,7 @@ func random_walk(dim, walk_len):
 				choices.append(move)
 		if choices.empty():
 			break
-		var choice = choices[randi() % choices.size()]
+		var choice = choices[rng.randi() % choices.size()]
 		pos = pos + choice["dpos"]
 		if pos.y + 1 < dim.y and level_array[pos.y+1][pos.z][pos.x] == -1:
 			level_array[pos.y+1][pos.z][pos.x] = 0
