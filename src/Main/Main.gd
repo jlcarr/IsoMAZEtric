@@ -1,5 +1,7 @@
 extends Spatial
 
+onready var FPSLabel = get_node("FPSLabel")
+
 onready var LevelName = get_node("LevelText/Container/LevelName")
 onready var LevelHint = get_node("LevelText/Container/LevelHint")
 onready var FinishLabel = get_node("Finish").find_node("Label")
@@ -75,3 +77,7 @@ func construct_level(level_array):
 					block.position(Vector3(x,y,z)-offset)
 					self.add_child(block)
 					obj_list.append(block)
+
+
+func _process(delta):
+	FPSLabel.text = str(Engine.get_frames_per_second()) + " fps"

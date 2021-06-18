@@ -274,7 +274,7 @@ const levels = [
 	},
 	{
 		"Name": "Level 7: Super Symmetry",
-		"HintText": "Sometimes it looks like nothing has changed.",
+		"HintText": "Even as the world turns around you, sometimes it can look like nothing has changed.",
 		"ConstMap":
 			[
 				[

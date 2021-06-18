@@ -39,9 +39,9 @@ func _physics_process(delta):
 		velocity += d_vec
 	velocity = SPEED * velocity.normalized()
 	
-	if fall_speed < -6*GRAVITY:
+	if fall_speed < -6*GRAVITY: # can't move while falling
 		velocity = Vector3()
-		
+	
 	velocity.y = fall_speed
 	body.move_and_slide(velocity, Vector3(0,1,0))
 	
