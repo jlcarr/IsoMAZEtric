@@ -6,7 +6,6 @@
 [ext_resource path="res://Tiles/Platform/Platform.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
-margin = 0.1
 extents = Vector3( 1, 0.2, 1 )
 
 [sub_resource type="CubeMesh" id=2]
@@ -15,7 +14,6 @@ extents = Vector3( 1, 0.2, 1 )
 shader = ExtResource( 1 )
 shader_param/scale = 8.0
 shader_param/x_val = 9.0
-shader_param/pos = null
 shader_param/sprite = ExtResource( 3 )
 
 [node name="Platform" type="StaticBody"]

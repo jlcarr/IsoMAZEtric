@@ -146,6 +146,7 @@ __meta__ = {
 }
 
 [node name="FPSLabel" type="Label" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

@@ -138,3 +138,11 @@ The **frament shader** is then set up to select the pixels from the texture so a
 - Final victory scene
 - Levels design
 - Consider level name: Shift In Perspective
+
+### Issues
+- Jitter
+   - There is jitter when moving diagonally (pressing both arrow keys at the same time)
+      - This in an unavoidable phenonmenon cause by this projection angle with the pixelated rendering: We have to move 2 pixels over and 1 up, discretely, making a stepping
+   - There is extra jitter and sometimes the player vibrates while otherwise still on the HTML export
+      - This appear to be an artifact specific to the HTML5 export. There is no section for web on the Godot page for jitter. Maybe check the next version...
+      - https://docs.godotengine.org/en/stable/tutorials/misc/jitter_stutter.html

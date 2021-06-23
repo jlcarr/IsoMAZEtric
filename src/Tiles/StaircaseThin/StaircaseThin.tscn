@@ -26,7 +26,6 @@ surfaces/0 = {
 shader = ExtResource( 2 )
 shader_param/scale = 8.0
 shader_param/x_val = 9.0
-shader_param/pos = null
 shader_param/sprite = ExtResource( 1 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -34,7 +33,6 @@ resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/scale = 8.0
 shader_param/x_val = 9.0
-shader_param/pos = Vector3( 0, 0, 0 )
 shader_param/sprite = ExtResource( 1 )
 
 [node name="Stairs" type="StaticBody"]

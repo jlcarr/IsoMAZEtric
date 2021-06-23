@@ -16,7 +16,8 @@ const GRAVITY = 0.98
 const JUMP_FORCE = 20
 var fall_speed = 0
 
-const SPEED = 10
+const SPEED = 8
+
 const l_vec = Vector3(-1,0,1)
 const r_vec = Vector3(1,0,-1)
 const u_vec = Vector3(-1,-0,-1)
