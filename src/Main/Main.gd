@@ -28,6 +28,7 @@ onready var player = self.find_node("Player")
 
 func _ready():
 	get_tree().paused = false
+	
 	obj_list.append(player)
 	var level = Levels.levels[Levels.current_level]
 	#level = Levels.levels[8]
@@ -44,6 +45,8 @@ func _ready():
 		var level_array = Levels.callv(level["FuncMap"], level["MapParams"])
 		construct_level(level_array)
 	player.position(player.orig)
+	
+	$HintAnimationPlayer.play("HintText")
 
 func _input(event):
 	if event.is_action_pressed("ui_rotate"):

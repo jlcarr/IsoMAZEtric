@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Theme.tres" type="StyleBox" id=1]
 [ext_resource path="res://Main/Main.gd" type="Script" id=2]
-[ext_resource path="res://Minitel.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Tiles/Player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tiles/Player/player.gd" type="Script" id=5]
 [ext_resource path="res://Main/LevelFinish.gd" type="Script" id=6]
@@ -36,9 +36,20 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 8
-font_data = ExtResource( 3 )
+[sub_resource type="Animation" id=2]
+resource_name = "HintText"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelText/Container/LevelHint:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -51,9 +62,13 @@ size = 32.0
 [node name="Player" parent="." instance=ExtResource( 4 )]
 script = ExtResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="PopupAnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
 anims/Message = SubResource( 1 )
+
+[node name="HintAnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/HintText = SubResource( 2 )
 
 [node name="Finish" type="PanelContainer" parent="."]
 pause_mode = 2
@@ -85,7 +100,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="Finish/VBoxContainer"]
 margin_right = 128.0
 margin_bottom = 10.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Congratulations!"
 align = 1
@@ -97,7 +112,7 @@ __meta__ = {
 margin_top = 14.0
 margin_right = 128.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "press enter"
 align = 1
@@ -126,7 +141,7 @@ size_flags_vertical = 4
 [node name="LevelName" type="Label" parent="LevelText/Container"]
 margin_right = 648.0
 margin_bottom = 10.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Level 0: Level Name"
 __meta__ = {
@@ -137,10 +152,11 @@ __meta__ = {
 margin_top = 14.0
 margin_right = 648.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Level's hint text directing you."
 autowrap = true
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,7 +169,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -648.0
 margin_top = -10.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "XYZ fps"
 align = 2
