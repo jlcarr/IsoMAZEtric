@@ -1,5 +1,5 @@
 # IsoMAZEtric
-A Godot 2.5D game using isometric 1-bit pixel art. Maze puzzles revolving around interpreting isometric projections.
+A Godot 2.5D game using isometric 1-bit pixel art. Maze puzzles with interpreting isometric projections as the core mechanic.
 
 ## Description
 Technically the project is not isometric, but rather dimetric: a slightly different type of axonometric projection.
@@ -133,11 +133,10 @@ The **frament shader** is then set up to select the pixels from the texture so a
 - Outline shader: https://roystan.net/articles/outline-shader.html
 
 ## TODO
-- Dark mode
 - Loading noise shader
-- Final victory scene
-- Levels design
 - Consider level name: Shift In Perspective
+- CI
+- Add sound
 
 ### Issues
 - Jitter

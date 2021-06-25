@@ -2,8 +2,8 @@ extends Spatial
 
 onready var FPSLabel = get_node("FPSLabel")
 
-onready var LevelName = get_node("LevelText/Container/LevelName")
-onready var LevelHint = get_node("LevelText/Container/LevelHint")
+onready var LevelName = get_node("LevelTextContainer/LevelText/Container/LevelName")
+onready var LevelHint = get_node("LevelTextContainer/LevelText/Container/LevelHint")
 onready var FinishLabel = get_node("Finish").find_node("Label")
 
 # Load all the tiles
@@ -27,6 +27,7 @@ var obj_list = []
 onready var player = self.find_node("Player")
 
 func _ready():
+	get_node("ColorInverter").visible = Levels.darkmode
 	get_tree().paused = false
 	
 	obj_list.append(player)
@@ -46,7 +47,8 @@ func _ready():
 		construct_level(level_array)
 	player.position(player.orig)
 	
-	$HintAnimationPlayer.play("HintText")
+	# Now the level is done: show the hint
+	get_node("HintAnimationPlayer").play("HintText")
 
 func _input(event):
 	if event.is_action_pressed("ui_rotate"):
@@ -84,3 +86,8 @@ func construct_level(level_array):
 
 func _process(delta):
 	FPSLabel.text = str(Engine.get_frames_per_second()) + " fps"
+
+
+func _on_DarkMode_pressed():
+	Levels.darkmode = not Levels.darkmode
+	get_node("ColorInverter").visible = Levels.darkmode

@@ -1,6 +1,7 @@
 extends Node
 
 var current_level = 0
+var darkmode = false
 
 var victory = false
 var victory_level = 8

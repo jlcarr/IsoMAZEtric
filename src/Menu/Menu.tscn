@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Minitel.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Theme.tres" type="StyleBox" id=2]
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=3]
+[ext_resource path="res://ColorInvert.tres" type="Material" id=4]
+[ext_resource path="res://moon.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -11,6 +13,16 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -77,4 +89,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DarkMode" type="Button" parent="."]
+margin_right = 21.0
+margin_bottom = 21.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+icon = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorInverter" type="ColorRect" parent="."]
+visible = false
+material = ExtResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Start" to="." method="start"]
+[connection signal="pressed" from="DarkMode" to="." method="_on_DarkMode_pressed"]
