@@ -123,6 +123,7 @@ The **frament shader** is then set up to select the pixels from the texture so a
 - https://docs.godotengine.org/en/stable/classes/class_camera.html
 - https://docs.godotengine.org/en/stable/tutorials/shading/shading_reference/shading_language.html
 - https://docs.godotengine.org/en/stable/tutorials/shading/shading_reference/spatial_shader.html
+- https://github.com/marketplace/actions/godot-ci
 
 ### 2.5D
 - Official Godot 2.5D plugin: https://godotengine.org/asset-library/asset/583
