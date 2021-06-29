@@ -141,7 +141,6 @@ The **frament shader** is then set up to select the pixels from the texture so a
 ## TODO
 - Loading noise shader
 - Consider level name: Shift In Perspective
-- CI
 - Add sound
 
 ### Issues
