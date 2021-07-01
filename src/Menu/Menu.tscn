@@ -111,7 +111,6 @@ __meta__ = {
 }
 
 [node name="SoundMode" type="TextureButton" parent="MenuIconBar"]
-visible = false
 margin_left = 25.0
 margin_right = 46.0
 margin_bottom = 21.0

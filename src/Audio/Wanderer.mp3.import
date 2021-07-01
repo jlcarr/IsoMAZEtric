@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Wanderer.mp3-890f769c0d144ad999a300affa728f55.mp3str"
+
+[deps]
+
+source_file="res://Audio/Wanderer.mp3"
+dest_files=[ "res://.import/Wanderer.mp3-890f769c0d144ad999a300affa728f55.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
