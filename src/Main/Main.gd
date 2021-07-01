@@ -4,6 +4,7 @@ onready var FPSLabel = get_node("FPSLabel")
 
 onready var LevelName = get_node("LevelTextContainer/LevelText/Container/LevelName")
 onready var LevelHint = get_node("LevelTextContainer/LevelText/Container/LevelHint")
+onready var SoundButton = get_node("LevelTextContainer/MenuIconBar/SoundMode")
 onready var FinishLabel = get_node("Finish").find_node("Label")
 
 # Load all the tiles
@@ -26,7 +27,9 @@ var obj_list = []
 # Prepare the player
 onready var player = self.find_node("Player")
 
+
 func _ready():
+	SoundButton.set_pressed(AudioController.mute)
 	get_node("ColorInverter").visible = Levels.darkmode
 	get_tree().paused = false
 	
@@ -50,6 +53,7 @@ func _ready():
 	# Now the level is done: show the hint
 	get_node("HintAnimationPlayer").play("HintText")
 
+
 func _input(event):
 	if event.is_action_pressed("ui_rotate"):
 		var rot_mat = Basis()
@@ -58,14 +62,18 @@ func _input(event):
 		for element in obj_list:
 			element.rot()
 
+
 func finish_line():
 	get_tree().paused = true
 	#get_node("AnimationPlayer").play("Message")
 	if Levels.victory:
 		FinishLabel.text = "Congratulations!"
+		AudioController.victory()
 	else:
 		FinishLabel.text = "Oops!"
+		AudioController.loss()
 	get_node("Finish").show()
+
 
 func construct_level(level_array):
 	var offset = Vector3()
@@ -91,3 +99,7 @@ func _process(delta):
 func _on_DarkMode_pressed():
 	Levels.darkmode = not Levels.darkmode
 	get_node("ColorInverter").visible = Levels.darkmode
+
+
+func _on_SoundMode_toggled(button_pressed):
+	AudioController.set_mute(button_pressed)

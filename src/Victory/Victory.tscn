@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Minitel.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://Styling/Minitel.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Styling/Theme.tres" type="StyleBox" id=2]
 [ext_resource path="res://Victory/Victory.gd" type="Script" id=3]
-[ext_resource path="res://ColorInvert.tres" type="Material" id=4]
-[ext_resource path="res://moon.png" type="Texture" id=5]
+[ext_resource path="res://Styling/ColorInvert.tres" type="Material" id=4]
+[ext_resource path="res://Styling/moon.png" type="Texture" id=5]
+[ext_resource path="res://Audio/sound_icon.png" type="Texture" id=6]
+[ext_resource path="res://Audio/sound_off_icon.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -112,7 +114,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DarkMode" type="Button" parent="."]
+[node name="MenuIconBar" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkMode" type="Button" parent="MenuIconBar"]
 margin_right = 21.0
 margin_bottom = 21.0
 custom_styles/hover = SubResource( 3 )
@@ -125,6 +133,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SoundMode" type="TextureButton" parent="MenuIconBar"]
+visible = false
+margin_left = 25.0
+margin_right = 46.0
+margin_bottom = 21.0
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
 [node name="ColorInverter" type="ColorRect" parent="."]
 visible = false
 material = ExtResource( 4 )
@@ -134,4 +152,5 @@ mouse_filter = 2
 
 [connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/RandomLevels" to="." method="_on_RandomLevels_pressed"]
-[connection signal="pressed" from="DarkMode" to="." method="_on_DarkMode_pressed"]
+[connection signal="pressed" from="MenuIconBar/DarkMode" to="." method="_on_DarkMode_pressed"]
+[connection signal="toggled" from="MenuIconBar/SoundMode" to="." method="_on_SoundMode_toggled"]

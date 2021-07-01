@@ -24,8 +24,7 @@ const u_vec = Vector3(-1,-0,-1)
 const d_vec = Vector3(1,0,1)
 
 var velocity = Vector3(0,0,0)
-func _ready():
-	pass
+
 
 func _physics_process(delta):
 	velocity = Vector3()
@@ -60,3 +59,4 @@ func _physics_process(delta):
 	if self.transform.origin.y < -20:
 		#self.position(orig)
 		get_tree().get_current_scene().finish_line()
+		self.set_physics_process(false) 

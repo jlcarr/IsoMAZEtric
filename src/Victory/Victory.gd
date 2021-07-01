@@ -1,7 +1,11 @@
 extends Control
 
+onready var SoundButton = get_node("MenuIconBar/SoundMode")
+
 func _ready():
+	SoundButton.set_pressed(AudioController.mute)
 	get_node("ColorInverter").visible = Levels.darkmode
+
 
 func _on_Menu_pressed():
 	Levels.current_level = 0
@@ -16,3 +20,7 @@ func _on_RandomLevels_pressed():
 func _on_DarkMode_pressed():
 	Levels.darkmode = not Levels.darkmode
 	get_node("ColorInverter").visible = Levels.darkmode
+
+
+func _on_SoundMode_toggled(button_pressed):
+	AudioController.set_mute(button_pressed)

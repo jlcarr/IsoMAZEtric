@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Levels="*res://Levels.gd"
+AudioController="*res://Audio/AudioController.tscn"
 
 [display]
 

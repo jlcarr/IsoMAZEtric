@@ -1,7 +1,9 @@
 extends Node
 
-var current_level = 0
 var darkmode = false
+var soundmode = true
+
+var current_level = 0
 
 var victory = false
 var victory_level = 8
@@ -10,6 +12,7 @@ var rng = RandomNumberGenerator.new()
 var rng_state = rng.get_state()
 func _ready():
 	rng.randomize()
+
 
 func level_up():
 	if victory and self.current_level == victory_level:
@@ -27,7 +30,7 @@ func level_up():
 	victory = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-	
+
 
 const levels = [
 	{
@@ -406,8 +409,6 @@ func random_walk(dim, walk_len):
 				if level_array[y][z][x] == -1:
 					level_array[y][z][x] = 0
 	return level_array
-
-
 
 
 func check_bounds(pos, dim):

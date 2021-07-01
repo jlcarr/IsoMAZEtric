@@ -1,16 +1,20 @@
 extends Spatial
 
+
 func _ready():
 	var Mesh = get_node("MeshInstance")
 	var SpriteMaterial = Mesh.get_surface_material(0).duplicate()
 	Mesh.set_surface_material(0, SpriteMaterial)
 
+
 func position(pos):
 	self.transform.origin = 2*pos
 	return self
 
+
 func get_pos():
 	return self.transform.origin/2
+
 
 func rot():
 	# Reposition
@@ -29,6 +33,7 @@ func rot():
 	if new_rot_deg == 180 or new_rot_deg == 270:
 		fb = -1
 	self.set_dir(lr, fb)
+
 
 func set_dir(lr=1,fb=1):
 	self.set_rotation(Vector3())

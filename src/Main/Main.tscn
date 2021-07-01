@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Theme.tres" type="StyleBox" id=1]
+[ext_resource path="res://Styling/Theme.tres" type="StyleBox" id=1]
 [ext_resource path="res://Main/Main.gd" type="Script" id=2]
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Styling/MainFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Tiles/Player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Tiles/Player/player.gd" type="Script" id=5]
 [ext_resource path="res://Main/LevelFinish.gd" type="Script" id=6]
-[ext_resource path="res://ColorInvert.tres" type="Material" id=7]
-[ext_resource path="res://moon.png" type="Texture" id=8]
+[ext_resource path="res://Styling/ColorInvert.tres" type="Material" id=7]
+[ext_resource path="res://Styling/moon.png" type="Texture" id=8]
+[ext_resource path="res://Audio/sound_icon.png" type="Texture" id=9]
+[ext_resource path="res://Audio/sound_off_icon.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Message"
@@ -72,7 +73,6 @@ projection = 1
 size = 32.0
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-script = ExtResource( 5 )
 
 [node name="PopupAnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
@@ -179,10 +179,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DarkMode" type="Button" parent="LevelTextContainer"]
+[node name="MenuIconBar" type="HBoxContainer" parent="LevelTextContainer"]
 margin_top = 36.0
 margin_right = 656.0
 margin_bottom = 57.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkMode" type="Button" parent="LevelTextContainer/MenuIconBar"]
+margin_right = 21.0
+margin_bottom = 21.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
@@ -192,6 +199,16 @@ icon = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SoundMode" type="TextureButton" parent="LevelTextContainer/MenuIconBar"]
+visible = false
+margin_left = 25.0
+margin_right = 46.0
+margin_bottom = 21.0
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
 
 [node name="FPSLabel" type="Label" parent="."]
 visible = false
@@ -219,4 +236,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="LevelTextContainer/DarkMode" to="." method="_on_DarkMode_pressed"]
+[connection signal="pressed" from="LevelTextContainer/MenuIconBar/DarkMode" to="." method="_on_DarkMode_pressed"]
+[connection signal="toggled" from="LevelTextContainer/MenuIconBar/SoundMode" to="." method="_on_SoundMode_toggled"]

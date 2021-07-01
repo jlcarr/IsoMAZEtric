@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Audio/AudioController.gd" type="Script" id=2]
+
+[node name="Node" type="Node"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+autoplay = true
+
+[node name="EffectVictory" type="AudioStreamPlayer" parent="."]
+
+[node name="EffectLoss" type="AudioStreamPlayer" parent="."]
